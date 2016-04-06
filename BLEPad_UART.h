@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-class BLEPad_UART : public Stream{
+class BLEPad_UART : public Stream {
 
     public:
         BLEPad_UART(Stream *s = &Serial1);

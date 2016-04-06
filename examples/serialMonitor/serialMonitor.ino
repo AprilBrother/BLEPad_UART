@@ -1,8 +1,14 @@
+#include "BLEPad_UART.h"
+
+
 String tmp; 
 
-int wakeup_pin =8;
-int config_pin =5;
-int change_pin =11;
+int wakeup_pin = 8;
+int config_pin = 5;
+int change_pin = 11;
+
+BLEPad_UART ble(&Serial1);
+
 void setup() {
   Serial.begin(19200);
   Serial1.begin(19200);
@@ -15,9 +21,7 @@ void setup() {
   pinMode(change_pin, OUTPUT);
   
   digitalWrite(wakeup_pin, LOW);
-  //delay(50);
   digitalWrite(config_pin, HIGH);
-  //delay(50);
   digitalWrite(change_pin, LOW);
 };
 
@@ -30,7 +34,6 @@ void loop() {
 
   if(tmp.length() > 0) {
     Serial.println(tmp);
-  //  Serial.println("\r\n");
     tmp = "";
   }
 
