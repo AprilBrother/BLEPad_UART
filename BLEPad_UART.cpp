@@ -1,32 +1,24 @@
-#include "AB_BLE.h"
+#include "BLEPad_UART.h"
 
-AB_BLE::AB_BLE(Stream *s) : stream(s) {};
+BLEPad_UART::BLEPad_UART(Stream *s) : stream(s) {};
 
-int AB_BLE::available() {
+int BLEPad_UART::available() {
     return stream->available();
 }
 
-size_t AB_BLE::write(uint8_t c) {
+size_t BLEPad_UART::write(uint8_t c) {
     return stream->write(c);
 }
 
-void AB_BLE::writeBytes(unsigned char *data, unsigned char len) {
-    delay(10);
-    if(len > 0) {
-        stream->write(data, len);
-    }
-}
-
-void AB_BLE::println(const char data[]) {
+void BLEPad_UART::println(const char data[]) {
     stream->println(data);
 }
 
-size_t AB_BLE::println(int n, int base) {
-    stream->println(n, base);
+size_t BLEPad_UART::println(int n, int base) {
+    return stream->println(n, base);
 }
 
-int AB_BLE::read() {
-    delay(10);	
+int BLEPad_UART::read() {
     return stream->read();
 }
 
