@@ -17,6 +17,8 @@ class BLEPad_UART : public Print {
 
         virtual size_t write(uint8_t c);
         virtual size_t println(int, int = DEC);
+        virtual void flush(void);
+        virtual int  peek(void);
 
         // pull in write(str) and write(buf, size) from Print
         using Print::write;

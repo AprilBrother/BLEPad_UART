@@ -39,3 +39,10 @@ int BLEPad_UART::available() {
     return hs->available();
 }
 
+void BLEPad_UART::flush(void) {
+    hs->flush();
+}
+
+int BLEPad_UART::peek(void) {
+    return hs->peek();
+}
