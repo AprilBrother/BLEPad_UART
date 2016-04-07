@@ -1,15 +1,11 @@
 #include "BLEPad_UART.h"
 
-BLEPad_UART::BLEPad_UART(HardwareSerial &s) {
-    hs = &s;
+BLEPad_UART::BLEPad_UART(HardwareSerial *s) {
+    hs = s;
 };
 
-int BLEPad_UART::available() {
-    return hs->available();
-}
-
-void begin(unsigned long baud) {
-    return hs->begin(baud);
+void BLEPad_UART::begin(unsigned long baud) {
+    hs->begin(baud);
 }
 
 size_t BLEPad_UART::write(uint8_t c) {
@@ -26,5 +22,9 @@ size_t BLEPad_UART::println(int n, int base) {
 
 int BLEPad_UART::read() {
     return hs->read();
+}
+
+int BLEPad_UART::available() {
+    return hs->available();
 }
 
