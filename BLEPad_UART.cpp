@@ -1,11 +1,22 @@
 #include "BLEPad_UART.h"
 
+#define PIN_WAKEUP          8
+#define PIN_CONFIG          5
+#define PIN_SWITCH_MODe     11
+
 BLEPad_UART::BLEPad_UART(HardwareSerial *s) {
     hs = s;
 };
 
 void BLEPad_UART::begin(unsigned long baud) {
+    pinMode(PIN_WAKEUP, OUTPUT);
+    digitalWrite(PIN_WAKEUP, LOW);
     hs->begin(baud);
+}
+
+void BLEPad_UART::end(void) {
+    digitalWrite(PIN_WAKEUP, HIGH);
+    hs->end();
 }
 
 size_t BLEPad_UART::write(uint8_t c) {
