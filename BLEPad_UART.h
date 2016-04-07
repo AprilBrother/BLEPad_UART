@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-class BLEPad_UART : public Stream {
+class BLEPad_UART : public Print {
 
     public:
         BLEPad_UART(Stream *s = &Serial1);
@@ -12,9 +12,11 @@ class BLEPad_UART : public Stream {
         int available();
         int read();
 
-        // Class Print virtual function Interface
         virtual size_t write(uint8_t c);
         virtual size_t println(int, int = DEC);
+
+        // pull in write(str) and write(buf, size) from Print
+        using Print::write;
 
     private:
         Stream    *stream;     // -> BLE module, e.g. SoftwareSerial or Serial1
