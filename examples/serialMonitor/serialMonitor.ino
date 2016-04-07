@@ -11,7 +11,7 @@ BLEPad_UART ble(&Serial1);
 
 void setup() {
   Serial.begin(19200);
-  Serial1.begin(19200);
+  ble.begin(19200);
 
   while (!Serial);
   Serial.println("hello!");
@@ -27,8 +27,8 @@ void setup() {
 
 void loop() {
 
-  while (Serial1.available() > 0)  {
-    tmp += char(Serial1.read());
+  while (ble.available() > 0)  {
+    tmp += char(ble.read());
     delay(2);
   }
 
@@ -38,7 +38,7 @@ void loop() {
   }
 
   if (Serial.available()) {
-    Serial1.write(Serial.read());
+    ble.write(ble.read());
   }
 
 }

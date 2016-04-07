@@ -6,8 +6,11 @@
 class BLEPad_UART : public Print {
 
     public:
-        BLEPad_UART(Stream *s = &Serial1);
+        BLEPad_UART(HardwareSerial *s = &Serial1);
         void println(const char data[]);
+
+        void begin(unsigned long baud);
+        void end(void);
 
         int available();
         int read();
@@ -19,7 +22,7 @@ class BLEPad_UART : public Print {
         using Print::write;
 
     private:
-        Stream    *stream;     // -> BLE module, e.g. SoftwareSerial or Serial1
+        HardwareSerial *hs;     // -> BLE module, e.g. Serial1
 
 };
 
