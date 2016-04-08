@@ -2,7 +2,7 @@
 
 #define PIN_WAKEUP          8
 #define PIN_CONFIG          5
-#define PIN_SWITCH_MODe     11
+#define PIN_SELECT_MODE     11
 
 BLEPad_UART::BLEPad_UART(HardwareSerial *s) {
     hs = s;
@@ -45,4 +45,21 @@ void BLEPad_UART::flush(void) {
 
 int BLEPad_UART::peek(void) {
     return hs->peek();
+}
+
+// Must call before BLEPad_UART::begin()
+void BLEPad_UART::setRole(int role) {
+    switch(role) {
+        case BLEPAD_MASTER_MODE:
+            digitalWrite(PIN_SELECT_MODE, LOW);
+            break;
+        default:
+        case BLEPAD_SLAVE_MODE:
+            digitalWrite(PIN_SELECT_MODE, HIGH);
+            break;
+    }
+}
+
+void BLEPad_UART::setConfigMode(bool mode) {
+    digitalWrite(PIN_CONFIG, mode ? LOW : HIGH);
 }

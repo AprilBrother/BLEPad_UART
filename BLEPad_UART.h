@@ -3,6 +3,9 @@
 
 #include <Arduino.h>
 
+#define BLEPAD_MASTER_MODE     0
+#define BLEPAD_SLAVE_MODE      1
+
 class BLEPad_UART : public Print {
 
     public:
@@ -11,6 +14,9 @@ class BLEPad_UART : public Print {
 
         void begin(unsigned long baud);
         void end(void);
+
+        void setRole(int role);
+        void setConfigMode(bool mode);
 
         int available();
         int read();
