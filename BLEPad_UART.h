@@ -9,7 +9,7 @@
 class BLEPad_UART : public Print {
 
     public:
-        BLEPad_UART(HardwareSerial *s = &Serial1);
+        BLEPad_UART(HardwareSerial &s);
         void println(const char data[]);
 
         void begin(unsigned long baud);

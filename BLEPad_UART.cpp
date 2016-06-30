@@ -4,8 +4,8 @@
 #define PIN_CONFIG          5
 #define PIN_SELECT_MODE     11
 
-BLEPad_UART::BLEPad_UART(HardwareSerial *s) {
-    hs = s;
+BLEPad_UART::BLEPad_UART(HardwareSerial &s) {
+    hs = &s;
 };
 
 void BLEPad_UART::begin(unsigned long baud) {

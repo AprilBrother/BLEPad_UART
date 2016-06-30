@@ -3,24 +3,21 @@
 
 String tmp; 
 
-int wakeup_pin = 8;
 int config_pin = 5;
 int change_pin = 11;
 
-BLEPad_UART ble(&Serial1);
+BLEPad_UART ble(Serial1);
 
 void setup() {
-  Serial.begin(19200);
-  ble.begin(19200);
+  Serial.begin(9600);
+  ble.begin(9600);
 
   while (!Serial);
   Serial.println("hello!");
   
-  pinMode(wakeup_pin, OUTPUT);
   pinMode(config_pin, OUTPUT);
   pinMode(change_pin, OUTPUT);
   
-  digitalWrite(wakeup_pin, LOW);
   digitalWrite(config_pin, HIGH);
   digitalWrite(change_pin, LOW);
 };
@@ -38,7 +35,7 @@ void loop() {
   }
 
   if (Serial.available()) {
-    ble.write(ble.read());
+    ble.write(Serial.read());
   }
 
 }
