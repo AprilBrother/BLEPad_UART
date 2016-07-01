@@ -2,10 +2,6 @@
 
 
 String tmp; 
-
-int config_pin = 5;
-int change_pin = 11;
-
 BLEPad_UART ble(Serial1);
 
 void setup() {
@@ -15,11 +11,7 @@ void setup() {
   while (!Serial);
   Serial.println("hello!");
   
-  pinMode(config_pin, OUTPUT);
-  pinMode(change_pin, OUTPUT);
-  
-  digitalWrite(config_pin, HIGH);
-  digitalWrite(change_pin, LOW);
+  ble.setConfigMode(0);
 };
 
 void loop() {

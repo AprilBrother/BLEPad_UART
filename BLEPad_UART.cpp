@@ -48,5 +48,6 @@ int BLEPad_UART::peek(void) {
 }
 
 void BLEPad_UART::setConfigMode(bool mode) {
+    pinMode(PIN_CONFIG, OUTPUT);
     digitalWrite(PIN_CONFIG, mode ? LOW : HIGH);
 }
