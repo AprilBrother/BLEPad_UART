@@ -15,7 +15,6 @@ class BLEPad_UART : public Print {
         void begin(unsigned long baud);
         void end(void);
 
-        void setRole(int role);
         void setConfigMode(bool mode);
 
         int available();

@@ -47,19 +47,6 @@ int BLEPad_UART::peek(void) {
     return hs->peek();
 }
 
-// Must call before BLEPad_UART::begin()
-void BLEPad_UART::setRole(int role) {
-    switch(role) {
-        case BLEPAD_MASTER_MODE:
-            digitalWrite(PIN_SELECT_MODE, LOW);
-            break;
-        default:
-        case BLEPAD_SLAVE_MODE:
-            digitalWrite(PIN_SELECT_MODE, HIGH);
-            break;
-    }
-}
-
 void BLEPad_UART::setConfigMode(bool mode) {
     digitalWrite(PIN_CONFIG, mode ? LOW : HIGH);
 }
