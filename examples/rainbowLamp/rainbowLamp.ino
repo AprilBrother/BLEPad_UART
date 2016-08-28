@@ -54,9 +54,6 @@ void setup() {
 
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
-
-  Serial.begin(9600);
-
 }
 
 void loop() {
