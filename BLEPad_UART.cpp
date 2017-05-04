@@ -51,3 +51,9 @@ void BLEPad_UART::setConfigMode(bool mode) {
     pinMode(PIN_CONFIG, OUTPUT);
     digitalWrite(PIN_CONFIG, mode ? LOW : HIGH);
 }
+
+// Work only for firmware version >= 5.0
+void BLEPad_UART::setRole(int role) {
+    pinMode(PIN_SELECT_MODE, OUTPUT);
+    digitalWrite(PIN_SELECT_MODE, role == BLEPAD_SLAVE_MODE ? HIGH : LOW);
+}

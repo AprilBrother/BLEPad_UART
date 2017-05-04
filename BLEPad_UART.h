@@ -1,4 +1,4 @@
-#ifndef  _BLEPAD_UART_H
+#ifndef _BLEPAD_UART_H
 #define _BLEPAD_UART_H
 
 #include <Arduino.h>
@@ -15,8 +15,6 @@ class BLEPad_UART : public Print {
         void begin(unsigned long baud);
         void end(void);
 
-        void setConfigMode(bool mode);
-
         int available();
         int read();
 
@@ -27,6 +25,11 @@ class BLEPad_UART : public Print {
 
         // pull in write(str) and write(buf, size) from Print
         using Print::write;
+
+        void setConfigMode(bool mode);
+
+        // Work only for firmware version >= 5.0
+        void setRole(int role);
 
     private:
         HardwareSerial *hs;     // -> BLE module, e.g. Serial1
