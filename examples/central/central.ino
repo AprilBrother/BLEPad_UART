@@ -1,5 +1,5 @@
 /*
- * Examples for AT command
+ * Central role example
  */
  
 #include "BLEPad_UART.h"
@@ -26,17 +26,19 @@ void setup() {
 };
 
 void loop() {
-  // Examples for AT commands
+  // Execute AT commands step by step
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     switch (i) {
       case 0:
         // Must reset for change role
+        // Change to central role
         ble.setRole(BLEPAD_MASTER_MODE);
         ble.write("<RESET>");
         break;
       case 1:
+        // Query the ROLE type, it should show central
         ble.write("<ROLETYPE>");
         break;
       case 2:
@@ -49,6 +51,7 @@ void loop() {
     i++;
   }
 
+  // show the response for AT command
   while (ble.available() > 0)  {
     tmp += char(ble.read());
     delay(2);
