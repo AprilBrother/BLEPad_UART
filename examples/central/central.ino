@@ -45,6 +45,10 @@ void loop() {
         // scan and connect to other BLEPad slave
         ble.write("<STARTSCAN>");
         break;
+      case 3:
+        // quit config mode and start transfer data
+        ble.setConfigMode(0);
+        break;
       default:
         break;
     }
